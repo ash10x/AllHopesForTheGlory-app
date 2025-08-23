@@ -1,0 +1,21 @@
+{
+  "name": "ahftg-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.5",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "scripts": {
+    "start:dev": "nodemon ./src/index.mjs",
+    "start": "nodemon ./src/index.mjs"
+  },
+  "type": "module"
+}
