@@ -12,6 +12,10 @@ app.use(rootRouter);
 
 const PORT = process.env.PORT || 5000;
 
+app.get("/", (req, res) => {
+  res.sendFile("dist", "index.html");
+});
+
 app.listen(PORT, () => {
   console.log(`Server Running | PORT: ${PORT}`);
 });
