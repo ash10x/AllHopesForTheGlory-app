@@ -10,9 +10,9 @@ const __dirname = path.dirname(__filename);
 import rootRouter from "./routes/index.mjs";
 
 const app = express();
-
 app.use(express.json());
 app.use(rootRouter);
+
 app.use(express.static(path.join(__dirname, "..", "dist")));
 
 app.get("/*name", (req, res) => {
