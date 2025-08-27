@@ -71,7 +71,7 @@ router.post("/api/contact", (req, res) => {
 
         mailTransporter.sendMail(mailOptions, function (error, info) {
           if (error) {
-            console.log(error);
+            res.send(error);
           } else {
             res.send(true);
           }
