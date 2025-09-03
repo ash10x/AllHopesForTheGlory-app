@@ -73,15 +73,16 @@ router.post("/api/contact", (req, res) => {
           if (error) {
             res.send(error);
           } else {
-            res.send(true);
-          }
-        });
-
-        mailTransporter.sendMail(ConfirmMailOptions, function (error, info) {
-          if (error) {
-            console.log(error);
-          } else {
-            res.send(true);
+            mailTransporter.sendMail(
+              ConfirmMailOptions,
+              function (error, info) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  res.send(true);
+                }
+              }
+            );
           }
         });
       } else {
