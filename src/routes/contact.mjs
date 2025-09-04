@@ -59,20 +59,21 @@ router.post("/api/contact", (req, res) => {
                      <p><strong>Company Name</strong> 🏛️: ${req.body.companyname}</p>
                      <p><strong>Message</strong><br> ${req.body.message}</p>`,
         };
-        const ConfirmMailOptions = {
-          from: "Request Received" + " " + process.env.SMTP_USER,
-          to: req.body.email,
-          subject: "Request Confirmation",
-          html: `<h2>Your request was received!</h2>
-                     <p>Hi ${req.body.fullname},</p>
-                     <p>Thank you for your submission. Our team is currently reviewing your request and you can expect a response within 24 hours. We appreciate your patience as we work to provide you with the best service possible.</p><br>
-                     <p><i>Please do not reply to this email.</i></p>`,
-        };
 
         mailTransporter.sendMail(mailOptions, function (error, info) {
           if (error) {
             res.send(error);
           } else {
+            const ConfirmMailOptions = {
+              from: "Request Received" + " " + process.env.SMTP_USER,
+              to: req.body.email,
+              subject: "Request Confirmation",
+              html: `<h2>Your request was received!</h2>
+                     <p>Hi ${req.body.fullname},</p>
+                     <p>Thank you for your submission. Our team is currently reviewing your request and you can expect a response within 24 hours. We appreciate your patience as we work to provide you with the best service possible.</p><br>
+                     <p><i>Please do not reply to this email.</i></p>`,
+            };
+
             mailTransporter.sendMail(
               ConfirmMailOptions,
               function (error, info) {
